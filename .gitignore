@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+# PII_NER directory
+data/
+I_want_PII_NER
+TagEditor/
