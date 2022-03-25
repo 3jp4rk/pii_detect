@@ -50,7 +50,10 @@ def create_ids():
 
     def random_phone_head_number():
         # return [random.choice(cell_phone_heads), random.choice(local_numbers), "02", make_random_number("", 4), ""]
-        return [random.choice(cell_phone_heads)+ " " + make_random_number("", 4) + " " + make_random_number("", 4), random.choice(cell_phone_heads)+ " " + make_random_number("", 3) + " " + make_random_number("", 4)]
+        return [random.choice(cell_phone_heads)+ " " + make_random_number("", 4) + " " + 
+                make_random_number("", 4), random.choice(cell_phone_heads)+ " " + make_random_number("", 3) + " " + make_random_number("", 4), 
+                
+                "010" + " " + make_random_number("", 4) + " " + make_random_number("", 4)]
 
 
     def random_inum():
@@ -94,9 +97,9 @@ def create_address():
     '''
     도로명주소 | 시+구+동 생성기
     '''
-    
-    postal_path = './통계청_나라통계_우편번호_20211110.csv' # 시+구+동+아파트
-    admin_path = './zipdoro.csv' # 도로명주소 
+    src_dir = './data/fake_data_generating_src/'
+    postal_path = src_dir + '통계청_나라통계_우편번호_20211110.csv' # 시+구+동+아파트
+    admin_path = src_dir + 'zipdoro.csv' # 도로명주소 
 
     postal_code = pd.read_csv(postal_path, delimiter=',', encoding='cp949')
     admin_address = pd.read_csv(admin_path, delimiter=',', encoding='cp949', names=['CODE', 'ADDR'])
@@ -152,7 +155,8 @@ def create_stores():
     
     # store_df.to_csv('./store_names_whole.csv', sep=',')
     
-    filepath = './store_names_whole.csv'
+    src_dir = './data/fake_data_generating_src/'
+    filepath = src_dir+'store_names_whole.csv'
     stores = pd.read_csv(filepath, delimiter=',', encoding='utf-8').reset_index(drop=True)
     sidx = rand_idx(stores)
     s_name = stores.iloc[sidx]
